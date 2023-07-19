@@ -1,7 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Marquee from "react-fast-marquee";
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
 import BlogCard from "../components/BlogCard";
+import ProductCard from "../components/ProductCard";
+import SpecialProduct from "../components/SpecialProduct";
 
 const Home = () => {
   return (
@@ -200,6 +209,33 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <section className="featured-wrapper py-5 home-wrapper-2">
+        <div className="container-xxl">
+          <div className="row">
+            <div className="col-12">
+              <h3 className="section-heading">Featured Collection</h3>
+            </div>
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+          </div>
+        </div>
+      </section>
+      <section className="special-wrapper py-5 home-wrapper-2">
+        <div className="container-xxl">
+          <div className="row">
+            <div className="col-12">
+              <h3 className="section-heading">Special Products</h3>
+            </div>
+            <div className="row">
+              <SpecialProduct />
+              <SpecialProduct />
+              <SpecialProduct />
+            </div>
+          </div>
+        </div>
+      </section>
       <section className="marque-wrapper py-5">
         <div className="container-xxl">
           <div className="row">
@@ -240,16 +276,32 @@ const Home = () => {
         <div className="container-xxl">
           <div className="row">
             <div className="col-12">
-              <h3 className="section-heading">
-                Our Latest Blogs
-              </h3>
+              <h3 className="section-heading">Our Latest Blogs</h3>
             </div>
-            <BlogCard/>
-            <BlogCard/>
-            <BlogCard/>
-            <BlogCard/>
+            <BlogCard />
+            <BlogCard />
+            <BlogCard />
+            <BlogCard />
           </div>
         </div>
+      </section>
+      <section>
+        <Swiper
+          modules={[Navigation, Pagination, Scrollbar, A11y]}
+          spaceBetween={50}
+          slidesPerView={3}
+          navigation
+          pagination={{ clickable: true }}
+          scrollbar={{ draggable: true }}
+          onSwiper={(swiper) => console.log(swiper)}
+          onSlideChange={() => console.log('slide change')}
+        >
+          <SwiperSlide><img src="images/service.png" alt="" /></SwiperSlide>
+          <SwiperSlide><img src="images/service-02.png" alt="" /></SwiperSlide>
+          <SwiperSlide><img src="images/service-03.png" alt="" /></SwiperSlide>
+          <SwiperSlide><img src="images/service-04.png" alt="" /></SwiperSlide>
+          <SwiperSlide><img src="images/service-05.png" alt="" /></SwiperSlide>
+        </Swiper>
       </section>
     </>
   );
